@@ -44,7 +44,7 @@ public class ReservationServiceImpl implements ReservationService {
             }
 
 
-            if(!spot.isOccupied() && availableSpot){
+            if(!spot.getOccupied() && availableSpot){
                 minimumPrice = Math.min(minimumPrice, spot.getPricePerHour());
                 getSpot = spot;
             }
