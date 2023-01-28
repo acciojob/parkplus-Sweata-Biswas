@@ -12,6 +12,7 @@ public class Spot {
     @Enumerated (value = EnumType.STRING)
     private SpotType spotType;
     private int pricePerHour;
+    @Column(columnDefinition = "TINYINT(1)")
     private boolean occupied;
     @ManyToOne
     @JoinColumn
@@ -69,4 +70,6 @@ public class Spot {
     public void setParkingLot(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
     }
+
+
 }

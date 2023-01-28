@@ -8,7 +8,9 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(columnDefinition = "TINYINT(1)")
     private boolean paymentCompleted;
+    @Enumerated(EnumType.STRING)
     private PaymentMode paymentMode;
     @OneToOne
     @JoinColumn
@@ -53,4 +55,5 @@ public class Payment {
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
+
 }
