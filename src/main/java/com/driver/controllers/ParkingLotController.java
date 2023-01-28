@@ -35,6 +35,7 @@ public class ParkingLotController {
 
     @DeleteMapping("/spot/{spotId}/delete")
     public ResponseEntity<Void> deleteSpot(@PathVariable int spotId) {
+        parkingLotService.deleteSpot(spotId);
         //delete a spot from given parking lot
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -42,7 +43,8 @@ public class ParkingLotController {
     @PutMapping("/{parkingLotId}/spot/{spotId}/update")
     public ResponseEntity<Spot> updateSpot(@PathVariable int parkingLotId, @PathVariable int spotId, @RequestParam int pricePerHour) {
         //update the details of a spot
-        return new ResponseEntity<>(parkingLotService.updateSpot(parkingLotId,spotId,pricePerHour), HttpStatus.OK);
+        Spot spot =parkingLotService.updateSpot(parkingLotId,spotId,pricePerHour);
+        return new ResponseEntity<>(spot, HttpStatus.OK);
     }
 
     @DeleteMapping("/{parkingLotId}/delete")

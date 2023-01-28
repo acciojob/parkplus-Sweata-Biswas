@@ -20,7 +20,7 @@ public class PaymentServiceImpl implements PaymentService {
     public Payment pay(Integer reservationId, int amountSent, String mode) throws Exception {
         Payment payment = new Payment();
             if(  PaymentMode.valueOf(mode.toUpperCase()) == null){
-                    throw new Exception();
+                    throw new Exception("Payment mode not detected");
             }
              Reservation reservation = reservationRepository2.findById(reservationId).get();
             int totalAmount = reservation.getSpot().getPricePerHour() * reservation.getNumberOfHours();
