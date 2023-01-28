@@ -53,17 +53,12 @@ public class ReservationServiceImpl implements ReservationService {
             throw  new Exception("Cannot make reservation");
         }
         List<Reservation> reservationList =  getSpot.getReservationList();
-        if(reservationList== null){
-            reservationList= new ArrayList<>();
-        }
+
         reservationList.add(reservation);
         reservation.setSpot(getSpot);
         User user = userRepository3.findById(userId).get();
         reservation.setUser(user);
         List<Reservation> reservationList1 = user.getReservationList();
-        if(reservationList1== null){
-            reservationList1= new ArrayList<>();
-        }
         reservationList1.add(reservation);
         getSpot.setOccupied(true);
         getSpot.setReservationList(reservationList);
