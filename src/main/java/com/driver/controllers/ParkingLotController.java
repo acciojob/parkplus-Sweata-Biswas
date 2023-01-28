@@ -21,14 +21,16 @@ public class ParkingLotController {
     @PostMapping("/add")
     public ResponseEntity<ParkingLot> addParkingLot(@RequestParam String name, @RequestParam String address) {
         //add a new parking lot to the database
-        return new ResponseEntity<>(parkingLotService.addParkingLot(name,address), HttpStatus.CREATED);
+        ParkingLot newParkingLot=parkingLotService.addParkingLot(name,address);
+        return new ResponseEntity<>(newParkingLot, HttpStatus.CREATED);
     }
 
     @PostMapping("/{parkingLotId}/spot/add")
     public ResponseEntity<Spot> addSpot(@PathVariable int parkingLotId, @RequestParam Integer numberOfWheels, @RequestParam Integer pricePerHour) {
         //create a new spot in the parkingLot with given id
         //the spot type should be the next biggest type in case the number of wheels are not 2 or 4, for 4+ wheels, it is others
-        return new ResponseEntity<>(parkingLotService.addSpot(parkingLotId,numberOfWheels,pricePerHour), HttpStatus.CREATED);
+       Spot newSpot= parkingLotService.addSpot(parkingLotId,numberOfWheels,pricePerHour);
+        return new ResponseEntity<>(newSpot, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/spot/{spotId}/delete")
