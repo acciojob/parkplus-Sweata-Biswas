@@ -65,7 +65,11 @@ public class ReservationServiceImpl implements ReservationService {
             reservationList1= new ArrayList<>();
         }
         reservationList1.add(reservation);
-
+        getSpot.setOccupied(true);
+        getSpot.setReservationList(reservationList);
+        user.setReservationList(reservationList1);
+        spotRepository3.save(getSpot);
+        userRepository3.save(user);
         reservationRepository3.save(reservation);
         return reservation;
     }
